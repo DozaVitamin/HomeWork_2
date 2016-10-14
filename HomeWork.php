@@ -73,17 +73,58 @@
 
     }
 
+    public function printAsBinaryTree(){
+        //CHECK OUT THIS FUNCTION!!! just for fun.
+        $heap = $this->heap;
+        $power = 0;
+        $number = 1;
+        echo("
+        <html>
+        <body>
+        <div style='text-align: center;'>
+        ");
+        while(!empty($heap)){
+            for($i = 0; $i < $number; $i++){
+                if($i == $number/2){
+                    print("<font style='padding-right: 20px;'>|</font>");
+                }
+                print ("<font style='padding-right: 20px;'>".$heap[count($heap) - 1]."</font>");
+
+                if($i%2 != 0 && $number > 4){
+                    print("<font style='padding-right: 20px;'>|</font>");
+
+                }
+
+                unset ($heap[count($heap) - 1]);
+            }
+            print("</br></br>");
+            $power++;
+            $number = pow(2, $power);
+        }
+        echo ("
+        </div>
+        </body>
+        </html>
+        ");
+
+        print("Ну вот, типа бинарное дерево гыгыгы. ");
+    }
+
    }
 
     //these are some values for fast checking how my class works.
     //$myHeap = new Heap(); //uncomment this to check how it works with 0 objects in array
-    $myHeap = new Heap("mdaaa",1,21,7,3,4,0,2,6,9,5,41, "lol");//comment this to check how it works with 0 objects in array
+    $myHeap = new Heap("mdaaa",1,21,7,3,4,2,6,9,5,41, "lol");//comment this to check how it works with 0 objects in array
     $myHeap->printAll();
     var_dump($myHeap->peek());
     $myHeap->pop();
     $myHeap->printAll();
     $myHeap->push(11,3);
     $myHeap->printAll();
+//        $myHeap = new Heap(1,21,7,3,4,0,2,6,9,5,41,3,5,54,3,5,34,5,43,53,4,5,3,4,5,35,2,4,42,34,234);
+//        $myHeap->printAsBinaryTree(); // try this to build binary tree!!!
+
+
 
 
     //by the way - are we gonna get any feedback about our homework? because like it's kinda important
